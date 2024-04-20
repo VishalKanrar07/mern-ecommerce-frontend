@@ -9,6 +9,7 @@ import women_banner from "./Components/Assets/banner_women.png";
 import men_banner from "./Components/Assets/banner_mens.png";
 import kid_banner from "./Components/Assets/banner_kids.png";
 import LoginSignup from "./Pages/LoginSignup";
+import ConfirmedPage from "./Components/ConfirmationPage/ConfirmedPage";
 
 function App() {
 
@@ -25,7 +26,8 @@ function App() {
             <Route path=':productId' element={<Product />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<LoginSignup/>} />
+          <Route path="/login" element={<LoginSignup />} />
+          <Route path="/confirmation" element={<ConfirmedPage />} />
         </Routes>
         <Footer />
       </Router>

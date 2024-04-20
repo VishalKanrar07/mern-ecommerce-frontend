@@ -2,12 +2,22 @@ import React, { useContext } from "react";
 import "./CartItems.css";
 import cross_icon from "../Assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
-const CartItems = ({ changePage }) => {
-  const { products } = useContext(ShopContext);
-  const { cartItems, removeFromCart, getTotalCartAmount } =
+const CartItems = ({ checkUserLoggedIn }) => {
+  const { products, cartItems, removeFromCart, getTotalCartAmount } =
     useContext(ShopContext);
+  const navigate = useNavigate();
 
+  const handleCheckout = () => {
+    const isLoggedIn = checkUserLoggedIn();
+
+    if (isLoggedIn) {
+      navigate("/confirmation");
+    } else {
+      alert("Please login to proceed.");
+    }
+  };
   return (
     <div className="cartitems">
       <div className="cartitems-format-main">
@@ -67,7 +77,7 @@ const CartItems = ({ changePage }) => {
             </div>
           </div>
 
-          <button onClick={changePage}>Checkout</button>
+          <button onClick={handleCheckout}>CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>
